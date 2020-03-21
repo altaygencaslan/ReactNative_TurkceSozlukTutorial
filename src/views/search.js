@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import StyledContainer from '../components/styledContainerComponent';
+import StyledTouchableOpacity from '../components/styledButtonComponent';
+import searchStyle from '../styles/searchStyleSheet'; //for sample
 
 function SearchView({ navigation }) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    return (      
+      <StyledContainer>
         <Text>Search Screen</Text>
-        <Button title="Go to Details" onPress={() => navigation.navigate('Detail')}
-      />
-      </View>
+        <TouchableOpacity style={searchStyle.btnDetails} onPress={() => navigation.navigate('Detail')} >
+          <Text>Go to Details</Text>
+        </TouchableOpacity>
+        <StyledTouchableOpacity onPress={() => navigation.navigate('Detail')}>
+          <Text>StyledTouchableOpacity'de bg ayarlanmıyor!</Text>
+        </StyledTouchableOpacity>
+      </StyledContainer>
     );
   }
 

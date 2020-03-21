@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import StyledContainer from '../components/styledContainerComponent';
+
 
 function DetailView() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Detail Screen</Text>
-      </View>
+      <StyledContainer>
+        <Text>Details Screen</Text>        
+      </StyledContainer>
     );
   }
 
