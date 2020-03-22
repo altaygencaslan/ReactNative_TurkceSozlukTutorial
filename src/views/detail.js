@@ -6,9 +6,9 @@ import StyledContainer from '../components/styledContainerComponent';
 function DetailView() {
     return (
       <StyledContainer>
-        <Text>Details Screen</Text>        
+        <Text> Details Screen </Text>
       </StyledContainer>
-    );
+    )
   }
 
   export default DetailView;

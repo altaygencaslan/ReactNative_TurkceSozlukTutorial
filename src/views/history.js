@@ -10,4 +10,4 @@ function HistoryView() {
     );
   }
 
-  export default HistoryView;
+  export default HistoryView
