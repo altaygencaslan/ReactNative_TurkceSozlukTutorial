@@ -3,7 +3,7 @@ import Container from './containerComponent'
 
 const StyledContainer = styled(Container)({});
 StyledContainer.defaultProps = {
-    // backgroundColor:"gold",
+    backgroundColor:"#E11E3C",
     flex:1,
     justifyContent:"center",
     alignItems:"center",

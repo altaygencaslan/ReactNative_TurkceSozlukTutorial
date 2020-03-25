@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native';
 import * as React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,7 +11,6 @@ import SearchView from './views/search';
 import FavoriteView from './views/favorite';
 import HistoryView from './views/history';
 import DetailView from './views/detail';
-import Container from './components/containerComponent';
 
 import theme from './utils/theme';
 
@@ -21,7 +20,7 @@ const Tab = createBottomTabNavigator();
 
 function SearchStack() {
     return (
-        <HomeStack.Navigator>
+        <HomeStack.Navigator headerMode="none">
             <HomeStack.Screen name="Search" component={SearchView} />
             <HomeStack.Screen name="Detail" component={DetailView} />
       </HomeStack.Navigator>
@@ -31,17 +30,19 @@ function SearchStack() {
 function App(){
     return (
       <ThemeProvider theme={theme}>
-          <Container flex={1} as={SafeAreaView}>
-            <NavigationContainer>
-              <Tab.Navigator initialRouteName="Search" tabBar={props=> <TabBar{...props}/>} >
-                  <Tab.Screen name="Favorite" component={FavoriteView} />
-                  <Tab.Screen name="Search" component={SearchStack} />
-                  <Tab.Screen name="History" component={HistoryView} />
-              </Tab.Navigator>
-            </NavigationContainer>
-          </Container>
-        </ThemeProvider>
-            );
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              initialRouteName="Search"
+              tabBar={props => <TabBar {...props} />}>
+              <Tab.Screen name="Favorite" component={FavoriteView} />
+              <Tab.Screen name="Search" component={SearchStack} />
+              <Tab.Screen name="History" component={HistoryView} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    )
 }
 
 export default App;
